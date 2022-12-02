@@ -88,7 +88,12 @@
         <div class="card-footer">
             <div class="row justify-content-between">
                 <div class="col-md-6">
-                    <p>Showing 1 to 10 out of 100</p>
+                    <!-- <p>Showing 1 to 10 out of 100</p> -->
+                    <div>
+                        Showing {{($products->currentpage()-1)*$products->perpage()+1}} to {{$products->currentpage()*$products->perpage()}}
+                        out of  {{$products->total()}}
+                    </div>
+                    {{ $products->links() }}
                 </div>
                 <div class="col-md-2">
 
