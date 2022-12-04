@@ -7,6 +7,7 @@ use App\Models\ProductVariant;
 use App\Models\ProductVariantPrice;
 use App\Models\Variant;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -46,10 +47,17 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->save();
 
-        $productVariant = new ProductVariant();
-        $productVariant->product_id = $product->id;
-        $productVariant->variant = $request->variant;
-        $productVariant->save();
+        foreach($request->file('file_path') as $key => $value){
+            $imageName=time().rand().'.'.$value->getClientOriginalExtension();
+            $imagePath='admin/images/product/'.$imageName;
+            Image::make($value)->resize(195,247)->save($imagePath);
+
+            $productImage=new ProductImage();
+            $productImage->product_id = $product->id;
+            $productImage->file_path = $imagePath;
+            $productImage->thumbnail = $request->thumbnail[$key];
+            $productImage->save();
+        }
     }
 
 

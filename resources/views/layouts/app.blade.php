@@ -157,30 +157,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-</script>
-<script>
-        $(document).ready(function(e){
-           $('.price_range').on('change',function(){
-               let min_value = $('#min_value').val();
-               let max_value = $('#max_value').val();
-               // alert(left_value+right_value);
-               $.ajax({
-                   url:"{{ route('search.products') }}",
-                   method:"GET",
-                   data:{min_value:min_value, max_value:max_value},
-                   success:function(res){
-                      $('.search-result').html(res);
-                   }
-               });
-           });
-        })
-     </script>
+
+
 </body>
 </html>

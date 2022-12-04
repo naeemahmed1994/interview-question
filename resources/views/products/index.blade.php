@@ -8,7 +8,7 @@
 
 
     <div class="card">
-        <form action="{{}}" method="get" class="card-header">
+        <form action="" method="get" class="card-header">
             @csrf
             <div class="form-row justify-content-between">
                 <div class="col-md-2">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-2">
                     <select name="variant" id="" class="form-control">
-                        <option selected="" value="">Select Variant</option>
+                        <option value="color">Select Variant</option>
                         <option value="">red</option>
                         <option value="">green</option>
 
