@@ -8,13 +8,17 @@
 
 
     <div class="card">
-        <form action="" method="get" class="card-header">
+        <form action="{{}}" method="get" class="card-header">
+            @csrf
             <div class="form-row justify-content-between">
                 <div class="col-md-2">
-                    <input type="text" name="title" placeholder="Product Title" class="form-control">
+                    <input type="text" id="title" name="title" placeholder="Product Title" class="form-control">
                 </div>
                 <div class="col-md-2">
                     <select name="variant" id="" class="form-control">
+                        <option selected="" value="">Select Variant</option>
+                        <option value="">red</option>
+                        <option value="">green</option>
 
                     </select>
                 </div>
@@ -24,8 +28,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Price Range</span>
                         </div>
-                        <input type="text" name="price_from" aria-label="First name" placeholder="From" class="form-control">
-                        <input type="text" name="price_to" aria-label="Last name" placeholder="To" class="form-control">
+                        <input type="text" id="min_value" name="price_from" aria-label="First name" placeholder="From" class="form-control price_range">
+                        <input type="text" id="max_value" name="price_to" aria-label="Last name" placeholder="To" class="form-control price_range">
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -60,7 +64,43 @@
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
 
                                 <dt class="col-sm-3 pb-0">
-                                    SM/ Red/ V-Nick
+                                    XL/ Black/ Full
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <dl class="row mb-0">
+                                        <dt class="col-sm-4 pb-0">Price : {{ number_format(200,2) }}</dt>
+                                        <dd class="col-sm-8 pb-0">InStock : {{ number_format(50,2) }}</dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                            <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
+
+                                <dt class="col-sm-3 pb-0">
+                                    XL/ Black/Half
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <dl class="row mb-0">
+                                        <dt class="col-sm-4 pb-0">Price : {{ number_format(200,2) }}</dt>
+                                        <dd class="col-sm-8 pb-0">InStock : {{ number_format(50,2) }}</dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                            <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
+
+                                <dt class="col-sm-3 pb-0">
+                                    L/ Black/ Full
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <dl class="row mb-0">
+                                        <dt class="col-sm-4 pb-0">Price : {{ number_format(200,2) }}</dt>
+                                        <dd class="col-sm-8 pb-0">InStock : {{ number_format(50,2) }}</dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                            <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
+
+                                <dt class="col-sm-3 pb-0">
+                                    L/ Black/ Half
                                 </dt>
                                 <dd class="col-sm-9">
                                     <dl class="row mb-0">
@@ -71,6 +111,7 @@
                             </dl>
                             <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more</button>
                         </td>
+
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ route('product.edit', 1) }}" class="btn btn-success">Edit</a>
